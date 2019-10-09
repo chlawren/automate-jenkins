@@ -1,0 +1,36 @@
+nodes:
+  - name: puppet
+    hostname: puppetmaster
+    aliases:
+      - puppet
+      - puppet.home
+    cpus: 2
+    ip: 172.35.1.100
+    memory: 4096
+    ports:
+      - guest: 80
+        host: 11080
+      - guest: 443 
+        host: 11043
+    synced_folders:
+      - src: 'modules'
+        dst: '/etc/puppetlabs/code/environments/production/modules'
+      - src: 'config'
+        dst: '/etc/puppetlabs/config'
+    provision: 'bin/build_master.sh'
+  - name: jenkins
+    hostname: jenkins
+    aliases:
+      - jenkins.home
+    cpus: 1
+    ip: 172.35.1.101
+    memory: 4096
+    ports:
+      - guest: 8000 
+        host: 8000 
+    synced_folders:
+      - src: 'modules'
+        dst: '/etc/puppetlabs/code/environments/production/modules'
+      - src: 'config'
+        dst: '/etc/puppetlabs/config'
+    provision: 'bin/build_agent.sh'
