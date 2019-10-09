@@ -1,1 +1,0 @@
-{"virtualbox":{"/etc/puppetlabs/code/environment":{"owner":"root","group":"root","guestpath":"/etc/puppetlabs/code/environment","hostpath":"/vagrant/puppetmaster/puppet/puppet","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/vagrant/puppetmaster/puppet","disabled":false,"__vagrantfile":true}}}
