@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
 environment = 'puppet'
 config.vm.box_check_update = false
 config.vm.hostname         = vagrant_config['hostname']
-config.vm.box              = "puppetlabs/centos-7.2-64-nocm"
+config.vm.box              = "geerlingguy/centos7"
  
   vagrant_config['nodes'].each do |node|
   
@@ -19,7 +19,7 @@ config.vm.box              = "puppetlabs/centos-7.2-64-nocm"
 
       srv.vm.network :private_network, ip: node['ip']
         node['ports'].each do |port|
-        srv.vm.network :forwarded_port, guest: port['guest'], host: port['host']
+        srv.vm.network :forwarded_port, guest: port['guest'], host: port['host'], auto_correct: true
       end
 
       srv.vm.provider :virtualbox do |vbx|
